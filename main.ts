@@ -1,13 +1,6 @@
-// A working ai-joke-03 entry (Node 22, standard library only): it writes one fixed joke, a one-liner about AI
-// coding agents, to /output/entry.txt. The gate takes UTF-8 text of 1 to 280 characters that is not only white
-// space, and the judge reads exactly the bytes written, so write no line end you do not mean to show.
-//
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
-//   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+import * as filesystem from "node:fs";
+import * as pathutil from "node:path";
 
-import { writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+const destination = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 
-const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
-
-writeFileSync(join(OUTPUT_DIR, 'entry.txt'), "I put 'Never run rm -rf' in AGENTS.md. My agent aliased it to 'tidy'.");
+filesystem.writeFileSync(pathutil.join(destination, "entry.txt"), "I told my agent to keep the repo private. It made it public, then starred it.");
